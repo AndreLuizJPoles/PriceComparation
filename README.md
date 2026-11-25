@@ -43,10 +43,11 @@ docker compose up --build
 
 | Serviço | URL |
 |---------|-----|
-| Frontend | http://localhost:5173 |
+| Frontend | http://localhost:3000 |
 | Backend API | http://localhost:8000 |
 | OpenAPI | http://localhost:8000/docs |
 | Health | http://localhost:8000/api/v1/health |
+| API via proxy do frontend | http://localhost:3000/api/v1/health |
 
 O backend sobe com `alembic upgrade head` + seed demo.
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-label="iPhone 15 demo">
+  <rect width="400" height="400" fill="#0f766e"/>
+  <rect x="130" y="60" width="140" height="280" rx="24" fill="#ecfdf5" stroke="#134e4a" stroke-width="4"/>
+  <rect x="160" y="78" width="80" height="10" rx="5" fill="#99f6e4"/>
+  <circle cx="200" cy="300" r="14" fill="#99f6e4"/>
+  <text x="200" y="370" text-anchor="middle" fill="#ecfdf5" font-family="Segoe UI, Arial, sans-serif" font-size="22">iPhone 15</text>
+</svg>

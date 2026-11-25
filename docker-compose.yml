@@ -123,7 +123,8 @@ services:
       context: .
       dockerfile: infrastructure/docker/Dockerfile.frontend
       args:
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000/api/v1}
+        # Same-origin via nginx proxy (/api -> backend). Avoids browser CORS issues.
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-/api/v1}
         VITE_DEMO_MODE: ${VITE_DEMO_MODE:-true}
     container_name: pricecomp-frontend
     restart: unless-stopped
