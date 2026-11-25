@@ -1,9 +1,10 @@
 """Application settings loaded from environment via pydantic-settings."""
 
 from functools import lru_cache
+from typing import Annotated
 
 from pydantic import Field, field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -23,7 +24,7 @@ class Settings(BaseSettings):
 
     backend_host: str = Field(default="0.0.0.0", alias="BACKEND_HOST")
     backend_port: int = Field(default=8000, alias="BACKEND_PORT")
-    cors_origins: list[str] = Field(
+    cors_origins: Annotated[list[str], NoDecode] = Field(
         default_factory=lambda: ["http://localhost:5173", "http://localhost:3000"],
         alias="CORS_ORIGINS",
     )
@@ -71,7 +72,7 @@ class Settings(BaseSettings):
     search_cache_ttl_seconds: int = Field(default=300, alias="SEARCH_CACHE_TTL_SECONDS")
     jwt_algorithm: str = Field(default="HS256", alias="JWT_ALGORITHM")
 
-    enabled_store_adapters: list[str] = Field(
+    enabled_store_adapters: Annotated[list[str], NoDecode] = Field(
         default_factory=lambda: ["demo"],
         alias="ENABLED_STORE_ADAPTERS",
     )

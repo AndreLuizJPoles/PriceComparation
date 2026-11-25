@@ -56,10 +56,17 @@ services:
       redis:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=3)",
+        ]
       interval: 10s
       timeout: 5s
       retries: 10
+      start_period: 15s
 
   worker:
     build:
@@ -90,7 +97,15 @@ services:
       dockerfile: infrastructure/docker/Dockerfile.backend
     container_name: pricecomp-beat
     restart: unless-stopped
-    command: ["celery", "-A", "app.tasks.celery_app.celery_app", "beat", "--loglevel=INFO"]
+    command:
+      [
+        "celery",
+        "-A",
+        "app.tasks.celery_app.celery_app",
+        "beat",
+        "--loglevel=INFO",
+        "--schedule=/tmp/celerybeat-schedule",
+      ]
     env_file:
       - .env
     environment:
