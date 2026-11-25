@@ -1,0 +1,19 @@
+# Placeholder CI — full lint/typecheck/pytest/vitest wired in later phase
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  bootstrap-placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm monorepo layout
+        run: |
+          test -f backend/app/main.py
+          test -f frontend/package.json
+          test -f docker-compose.yml
+          echo "Bootstrap layout OK (Phase 1). Full CI in later phase."

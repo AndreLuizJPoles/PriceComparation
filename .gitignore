@@ -1,0 +1,59 @@
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Node / frontend
+node_modules/
+node_modules_old*/
+frontend/dist/
+frontend/node_modules_old*/
+frontend/coverage/
+*.tsbuildinfo
+.npm
+.eslintcache
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Docker / local data
+postgres_data/
+redis_data/
+
+# Logs / secrets
+*.log
+*.pem
+*.key
+secrets/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
